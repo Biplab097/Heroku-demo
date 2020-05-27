@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask, render_template, request, url_for
-from tensorflow.python.keras.backend import set_session
+#from tensorflow.python.keras.backend import set_session
 #from skimage.transform import resize
 #import matplotlib.pyplot as plt
 import tensorflow as tf
