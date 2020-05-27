@@ -4,10 +4,10 @@ from flask import Flask, render_template, request, url_for
 #from tensorflow.python.keras.backend import set_session
 #from skimage.transform import resize
 #import matplotlib.pyplot as plt
-import tensorflow as tf
+#import tensorflow as tf
 import numpy as np
-import tensorflow.python.keras.backend as K
-from keras.models import load_model
+#import tensorflow.python.keras.backend as K
+#from keras.models import load_model
 from werkzeug.utils import secure_filename, redirect
 import cv2
 
@@ -15,13 +15,13 @@ import cv2
 #tf.disable_v2_behavior()
 app = Flask(__name__)
 
-config = tf.compat.v1.ConfigProto(
-        device_count = {'GPU': 0}
-    )
-sess = tf.compat.v1.Session(config=config)
-graph = tf.compat.v1.get_default_graph()
-set_session(sess)
-K.set_floatx('float16')
+# config = tf.compat.v1.ConfigProto(
+#         device_count = {'GPU': 0}
+#     )  for heroku
+#sess = tf.compat.v1.Session(config=config) for heroku
+#graph = tf.compat.v1.get_default_graph() for heroku 
+#set_session(sess)
+# K.set_floatx('float16') for heroku
 #model = load_model('/home/code_broom/PycharmProjects/DistractedDrivers/Models/class_7/class_7_flask_trial.h5')
 
 
@@ -48,14 +48,14 @@ def prediction(filename):
     ### my_image_re = resize(my_image, (224, 224, 3))
 
     # Step 3
-    global sess
-    global graph
+    #global sess  for heroku
+    #global graph  for heroku
     with graph.as_default():
-        sess.as_default()
+        #sess.as_default()
         # probabilities = model.predict(np.array([my_image_re, ]))[0, :]
         imgs = []
         imgs.append(img)
-        set_session(sess)
+        #set_session(sess) for heroku
         probabilities = [0]*7#model.predict([imgs])
         list1 = [0,2,3,4,5,6,7]#probabilities[0].tolist()
         # Step 4
